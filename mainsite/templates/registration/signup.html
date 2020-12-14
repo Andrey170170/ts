@@ -13,36 +13,63 @@
     else { 
     }
 </script>
-
+<script>
+  function show_hide_password(target){
+  var input = document.getElementById('id_password1', 'id_password2',);
+  if (input.getAttribute('type') == 'password') {
+    target.classList.add('view');
+    input.setAttribute('type', 'text');
+  } else {
+    target.classList.remove('view');
+    input.setAttribute('type', 'password');
+  }
+  return false;
+}
+</script>
 
 {% load static %}
-
-
-
-<--h2>Регистрация</--h2> 
 <div class="conteiner">
    <div class="login-tables"> 
         <img class="DFL" src="https://media.discordapp.net/attachments/745700277004402832/780420125471014932/1.jpg">
              <form id="regForm" method="post">
                 <div style="text-align:center;margin-top:26px; border-image-width: 50px; ">
+                    <span class="step active"></span>
                     <span class="step"></span>
-                    <span class="step"></span>
-                    <span class="step"></span>
-                    <span class="step"></span>
-                    <span class="step"></span>
+                    <span class="step"> </span>
+                    <span class="step"> </span>
                 </div>
-                {% csrf_token %}  {% for field in form %}
+                <input type="hidden" name="csrfmiddlewaretoken" value="zpaiwvYTM6Dq59xYXuTt6qc9U22rkYnNYli3REBvE2DQ8EHtK1lpSEIfzL0rnjBX">    
+                    <p class="tab" style="display: block;">
+                        <label for="id_username">Имя пользователя:</label><br> {{ form.username }}
+                        <small style="color: grey">  </small>  
+                    </p>
+                
+                    <p class="tab">
+                        <label for="id_email">Email:</label><br> {{ form.email }} 
+                        <small style="color: grey">  </small>  
+                    </p>
+                
+                    <p class="tab">
+                        <label for="id_password1">Пароль:</label><br>{{ form.password1 }}
+                         <a href="#" class="password-control" onclick="return show_hide_password(this);"></a>
+                        <small style="color: grey">  </small>  
+                    </p>
+                
+                    <p class="tab">
+                        <label for="id_password2">Подтверждение пароля:</label><br> {{ form.password2 }}
+                         <a href="#" class="password-control" onclick="return show_hide_password(this);"></a>
+                        <small style="color: grey">  </small>  
+                    </p>
                     <p class="tab">
                         {{ field.label_tag }}<br> {{ field }} {% if field.help_text %}
                         <small style="color: grey">  </small> {% endif %} {% for error in field.errors %}
                         <p style="color: red">{{ error }}</p>
                         {% endfor %}
                     </p>
-                {% endfor %}
                 <div class="next">
                     <button type="button submit" id="nextBtn" onclick="nextPrev(1)">Next</button>
                 </div>
-                    <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+                    <button type="button" id="prevBtn" onclick="nextPrev(-1)" style="display: none;">Previous</button>
         </form>
     </div>
 </div>

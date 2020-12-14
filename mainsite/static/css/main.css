@@ -1634,8 +1634,7 @@ blockquote {
   display: grid;
   justify-content: center;
   align-content: center;
-  width: 1920px;
-  height: 1080px;
+  font-size: 1.5em;
   background-image: url("../img/conteiner.jpg");
   /*width:  1920px;*/
   /*height: 1080px;*/
@@ -1733,7 +1732,7 @@ color: #011128;
   margin-left: 0px !important;
 }
 .DRT {
-  padding-left: 250px; 
+  padding-left: 100px; 
   color: black;
 }
 .DLT {
@@ -1827,3 +1826,14 @@ color: #011128;
 
 }
 
+.password-control {
+  width: 30px;
+  height: 30px;
+  margin-top: 5px;
+  position: absolute;
+  display: inline-block;
+  background: url(https://snipp.ru/demo/495/view.svg) 0 0 no-repeat;
+}
+.password-control.view {
+  background: url(https://snipp.ru/demo/495/no-view.svg) 0 0 no-repeat;
+}
